@@ -1,15 +1,31 @@
 .main {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 6rem;
   min-height: 100vh;
 }
 
-.message {
-  text-align: center;
-  font-size: 5rem;
+.header {
+  display: flex;
+  flex-direction: row;
+  padding: 2rem;
+  border: 1px solid black;
+}
+
+.brand {
+  flex: 2;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  margin: 0 .3rem 0 0;
+}
+
+.nav>li {
+  padding: 0 1rem;
+  list-style: none;
+}
+
+.nav>li:hover {
+  text-shadow: 2px 0px 1px rgb(var(--background-start-rgb));
 }
 
 /* Enable hover only on non-touch devices */

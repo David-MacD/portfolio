@@ -1,0 +1,17 @@
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.flexRow {
+  display: flex;
+  flex-direction: row;
+}
+
+.flexBetween {
+  justify-content: space-between;
+}
+
+.flexAround {
+  justify-content: space-around;
+}
