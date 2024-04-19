@@ -1,3 +1,9 @@
-.code {
-  display: none !important;
+.page {
+  margin: 5rem auto;
+  max-width: 80ch;
+}
+
+.articleHeader {
+  font-size: 3rem;
+  padding: 1rem 0;
 }

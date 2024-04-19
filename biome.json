@@ -7,6 +7,10 @@
 		"ignoreUnknown": true
 	},
 	"formatter": {
+		"ignore": [
+			"**.d.ts",
+			"article/**"
+		],
 		"indentWidth": 2
 	},
 	"linter": {
