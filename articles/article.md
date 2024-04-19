@@ -1,5 +1,5 @@
 _**JavaScript**_ is a great multi-paradigm language with lots of dynamism thanks to it's dynamic type system. But the industry has increasinly been moving towards _**TypeScript**_. Why?
-Well let's take a look at what TypeScript offers, and how it can enhance your development.
+Let's take a look at what TypeScript offers, and how it can enhance your development.
 
 We'll start with the classic FizzBuzz challenge given to prospective junior developers during interviews.
 
@@ -238,6 +238,17 @@ So let's make a `composeRules` function that takes a list of `SubstitutionRule`s
 const composeRules = (rules: SubstitutionRule[]): SubstitutionRule => // ???
 
 ```
-Our rules are an array, and when we want to accumulate a list of values into a single value, we'd naturally reach for the `reduce` function. How can we reduce a `SubstitutionRule[]` down into a single `SubstitutionRule` that is the composition of all the rules in our list?
+With our naive composition, we observed that the underlying operation of composition was string concatenation. Each successful rule application (based on the predicate) concatenates together. If a rule returns null, it's ignored. If there are no successful rule applications (ie. they all return null), then we pass through the input number as a string. This means our resulting `SubstituionRule` is guaranteed to never return null - which is why we got that type that almost resembled our `SubstitutionRule`.
 
-====================
+So there are two things to figure out:
+- Try to match the `SubstitutionRule` type to our composition of them.
+- Form a concatenation contract that we can use during the composition
+
+Given that our rules are an array, and that when we want to accumulate a list of values into a single value, we'd naturally reach for the `reduce` function, we can think of our `concat` in terms of a `reducer` function. So How can we reduce a `SubstitutionRule[]` down into a single `SubstitutionRule` that is the composition of all the rules in our list?
+
+```typescript
+const composeRules = (rules: SubstitutionRule[]): SubstitutionRule =>
+  rules.reduce((acc, rule) => {
+
+  }, )
+``
