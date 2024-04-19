@@ -11,11 +11,15 @@
   },
   "dependencies": {
     "next": "14.2.0",
+    "prismjs": "^1.29.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-markdown": "^9.0.1",
+    "react-simple-code-editor": "^0.13.1"
   },
   "devDependencies": {
     "@types/node": "^20",
+    "@types/prismjs": "^1.26.3",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
