@@ -24,8 +24,8 @@ importers:
         specifier: ^9.0.1
         version: 9.0.1(@types/react@18.2.77)(react@18.2.0)
       react-simple-code-editor:
-        specifier: ^0.13.1
-        version: 0.13.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        specifier: ^0.14.1
+        version: 0.14.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
     devDependencies:
       '@types/node':
         specifier: ^22
@@ -1276,11 +1276,11 @@ packages:
       '@types/react': '>=18'
       react: '>=18'
 
-  react-simple-code-editor@0.13.1:
-    resolution: {integrity: sha512-XYeVwRZwgyKtjNIYcAEgg2FaQcCZwhbarnkJIV20U2wkCU9q/CPFBo8nRXrK4GXUz3AvbqZFsZRrpUTkqqEYyQ==}
+  react-simple-code-editor@0.14.1:
+    resolution: {integrity: sha512-BR5DtNRy+AswWJECyA17qhUDvrrCZ6zXOCfkQY5zSmb96BVUbpVAv03WpcjcwtCwiLbIANx3gebHOcXYn1EHow==}
     peerDependencies:
-      react: '*'
-      react-dom: '*'
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
 
   react@18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
@@ -3143,7 +3143,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  react-simple-code-editor@0.13.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+  react-simple-code-editor@0.14.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
