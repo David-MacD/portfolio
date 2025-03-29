@@ -1,0 +1,24 @@
+{{
+  const crypto = require("crypto");
+  console.info("===== SECRET:", WEBHOOK_SECRET)
+  const signatureHeader = "x-signature-256"
+
+  const testBody = JSON.stringify({
+    message: "Hello"
+  });
+
+  exports.body = testBody;
+
+  const hash = crypto
+      .createHmac("sha256", WEBHOOK_SECRET)
+      .update(testBody)
+      .digest("hex");
+  console.log(hash)
+  exports.signature = `sha256=${hash}`;
+}}
+
+POST http://localhost:3000/api/hooks
+Content-Type: application/json
+x-signature-256: {{signature}}
+
+{{body}}
