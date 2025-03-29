@@ -251,4 +251,4 @@ const composeRules = (rules: SubstitutionRule[]): SubstitutionRule =>
   rules.reduce((acc, rule) => {
 
   }, )
-``
+```
