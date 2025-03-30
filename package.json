@@ -3,8 +3,7 @@
   "version": "0.1.1",
   "private": true,
   "engines": {
-    "node": "^22.14",
-    "pnpm": "^10.7"
+    "node": "^22.14"
   },
   "scripts": {
     "dev": "next dev --turbopack",
