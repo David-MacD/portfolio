@@ -12,7 +12,7 @@ export default function Home() {
 				</Link>
 				<ul className={s.nav}>
 					<li className={s.navLink}>
-						<Link href="/rojects" className={s.navLink}>
+						<Link href="/projects" className={s.navLink}>
 							Projects
 						</Link>
 					</li>
