@@ -172,17 +172,17 @@ type SubstitutionRule = (i: number) => StringOrNull;
 
 Now let's think about implementing our `rule` function that will use this type.
 
+First we'll want a `SubstitutionPredicate`. This is similar to our
+`divisibleBy` in the simple example, except more general. This is the
+essential part of our `SubstitutionRule`.
+The `input` is the number from the array.
+
 ```typescript
-/**
- * First we'll want a `SubstitutionPredicate`. This is similar to our
- * `divisibleBy` in the simple example, except more general. This is the
- * essential part of our `SubstitutionRule`.
- * The `input` is the number from the array.
- */
 type SubstitutionPredicate = (input: number) => boolean;
-const rule =
-  (predicate: SubstitutionPredicate) =>
-  (substitution: string): SubstitutionRule => {
+const rule = (
+    predicate: SubstitutionPredicate, 
+    substitution: string
+  ): SubstitutionRule => {
     return (input) => {
       if (predicate(input)) {
         return substitution;
@@ -197,13 +197,15 @@ The first thing we'll want to do is create a "ruleset" (which we'll call `fizzBu
 
 ```typescript
 // Make some helpers
-const makeDivisibleByRule = (n) => rule((i) => i % n === 0);
-const makeSetBitsLargerThanRule = (n) => rule((i) => numberOfSetBits(i) > n);
+const divisibleBy = (divisor: number) => (x: number) =>
+  x % divisor === 0;
+const bitsLargerThan = (n: number) => (i: number) =>
+	i.toString(2).replace(/0/g, "").length > n;
 
 // Let's make 3 rules
-const fizz = makeDivisibleByRule(3)("Fizz"); // :: SubstitutionRule
-const buzz = makeDivisibleByRule(5)("Buzz"); // :: SubstitutionRule
-const bazz = makeSetBitsLargerThanRule(4)("BAZZ"); // :: SubstitutionRule
+const fizz = rule(divisibleBy(3), "Fizz"); // :: SubstitutionRule
+const buzz = rule(divisibleBy(5), "Fizz"); // :: SubstitutionRule
+const bazz = rule(bitsLargerThan(4), "Fizz"); // :: SubstitutionRule
 
 const fizzBuzzBazz = (i: number): string => {
   const fizzResult = fizz(i);
@@ -221,7 +223,10 @@ const fizzBuzzBazz = (i: number): string => {
 console.log(range(1, 100).map(fizzBuzzBazz));
 ```
 
-So we have our final rules composition - our domain is typed and our logic is sound, but it's a bit unwieldy; adding or removing rules will be a bother. What can we do?
+So we have our final rules composition - our domain is typed and our logic is sound, but it's a bit unwieldy; adding or removing rules will be a bother.
+
+What can we do?
+
 Notice how the signature of our `fizzBuzzBazz` looks strikingly like a `SubstitutionRule` but instead of a `StringOrNull` as its return type, it only has `string`:
 ```typescript
 (i: number) => string
@@ -244,7 +249,7 @@ So there are two things to figure out:
 - Try to match the `SubstitutionRule` type to our composition of them.
 - Form a concatenation contract that we can use during the composition
 
-Given that our rules are an array, and that when we want to accumulate a list of values into a single value, we'd naturally reach for the `reduce` function, we can think of our `concat` in terms of a `reducer` function. So How can we reduce a `SubstitutionRule[]` down into a single `SubstitutionRule` that is the composition of all the rules in our list?
+Given that our rules are an array, and that when we want to accumulate a list of values into a single value, we'd naturally reach for the `reduce` function, we can think of our `concat` in terms of a `reducer` function. So how can we reduce a `SubstitutionRule[]` down into a single `SubstitutionRule` that is the composition of all the rules in our list?
 
 ```typescript
 const composeRules = (rules: SubstitutionRule[]): SubstitutionRule =>

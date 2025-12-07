@@ -1,17 +1,10 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.6.0/schema.json",
-	"organizeImports": {
-		"enabled": true
-	},
+	"$schema": "https://biomejs.dev/schemas/2.3.6/schema.json",
 	"files": {
 		"ignoreUnknown": true
 	},
 	"formatter": {
-		"ignore": [
-			"**.d.ts",
-			"article/**"
-		],
-		"indentWidth": 2
+		"useEditorconfig": true
 	},
 	"linter": {
 		"enabled": false,
